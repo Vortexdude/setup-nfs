@@ -1,4 +1,4 @@
-hosts: all
-become: true
-roles:
-  - { role: setup-nfs }
+- hosts: all
+  become: true
+  roles:
+    - { role: setup-nfs }

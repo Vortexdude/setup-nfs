@@ -8,7 +8,7 @@
     state: present
 
 - name: Ensure directories to export exist
-  file:  # noqa 208
+  file: 
     path: "{{ item.strip().split()[0] }}"
     state: directory
   with_items: "{{ nfs_exports }}"
@@ -25,3 +25,5 @@
 - name: Ensure nfs is running.
   service: "name={{ nfs_server_daemon }} state=started enabled=yes"
   when: nfs_exports | length
+
+- debug: msg="you can mount this via command - {{ ansible_hostname }}:{{ nfs_exports.strip().split()[0] }}"
