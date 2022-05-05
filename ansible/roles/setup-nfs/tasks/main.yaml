@@ -26,4 +26,4 @@
   service: "name={{ nfs_server_daemon }} state=started enabled=yes"
   when: nfs_exports | length
 
-- debug: msg="you can mount this via command - {{ ansible_hostname }}:{{ nfs_exports.strip().split()[0] }}"
+- debug: msg="you can mount this via command - mount -t nfs {{ ansible_default_ipv4.address }}:{{ nfs_exports[0].split()[0] }} /mnt"
